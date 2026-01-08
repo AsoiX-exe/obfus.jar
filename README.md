@@ -1,29 +1,30 @@
 # 🛡️ OBFUS.JAR | Java Obfuscator 
 
-██████╗ ██████╗ ███████╗██╗ ██╗███████╗ ██╗ █████╗ ██████╗
-██╔══██╗██╔══██╗██╔═══╝██║ ██║██╔═══╝ ██║██╔══██╗██╔══██╗
-██║ ██║██████╔╝█████╗ ██║ ██║███████╗ ██║████████║██████╔╝
-██║ ██║██╔══██╗██╔══╝ ██║ ██║╚════██║██ ██║██╔══██╗██╔══██╗
-██████╔╝██████╔╝██║ ╚██████╔╝██████║╚█████╔╝██║ ██║██║ ██║
-╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚═════╝ ╚════╝ ╚═╝ ╚═╝ ╚═╝ ╚═╝
+```text
+    ██████╗ ██████╗ ███████╗██╗   ██╗███████╗     ██╗ █████╗ ██████╗ 
+    ██╔══██╗██╔══██╗██╔════╝██║   ██║██╔════╝     ██║██╔══██╗██╔══██╗
+    ██║  ██║██████╔╝█████╗  ██║   ██║███████╗     ██║███████║██████╔╝
+    ██║  ██║██╔══██╗██╔══╝  ██║   ██║╚════██║██   ██║██╔══██╗██╔══██╗
+    ██████╔╝██████╔╝██║     ╚██████╔╝███████║╚█████╔╝██║  ██║██║  ██║
+    ╚═════╝ ╚═════╝ ╚═╝      ╚═════╝ ╚══════╝ ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 # Obfus.jar is an obfuscation tool designed to protect Java applications and Bukkit/Spigot plugins from reverse engineering. Using advanced assembly-based transformations, it makes decompiled code unreadable and causes analysis tools to fail.
 
 #   🔥 Key Features
-# 🔢 Mathematical Mutation: Transforms simple integers into complex mathematical expressions evaluated at runtime (XOR/AND/OR logic).
+🔢 Mathematical Mutation: Transforms simple integers into complex mathematical expressions evaluated at runtime (XOR/AND/OR logic).
 
-# 🛡️ Bitwise String Security: Encrypts strings using custom bitwise operations and hides them behind generated decryption methods.
+🛡️ Bitwise String Security: Encrypts strings using custom bitwise operations and hides them behind generated decryption methods.
 
-# 🏗️ Stack-Based String Builder: Dynamically restores strings on the JVM stack, leaving no trace for static string pool scanners.
+🏗️ Stack-Based String Builder: Dynamically restores strings on the JVM stack, leaving no trace for static string pool scanners.
 
-# 🌪️ Spaghetti Flow: Disrupts linear code execution using "flow bridges" and opaque predicates that mislead control flow graphs (CFGs).
+🌪️ Spaghetti Flow: Disrupts linear code execution using "flow bridges" and opaque predicates that mislead control flow graphs (CFGs).
 
-# 💀 Anti-decompiler: Injects "dead sectors"—illegal bytecode sequences that cause tools like Fernflower or JD-GUI to hang or crash, while remaining valid for the JVM.
+💀 Anti-decompiler: Injects "dead sectors"—illegal bytecode sequences that cause tools like Fernflower or JD-GUI to hang or crash, while remaining valid for the JVM.
 
-# 📂 Garbage Generation: Fills the JAR file with thousands of dummy classes and creates a deep folder structure to hide your real logic.
+📂 Garbage Generation: Fills the JAR file with thousands of dummy classes and creates a deep folder structure to hide your real logic.
 
-# ☃️ Signature: You can create your own watermark that will be displayed in each class (Example: protected by obfus.jar).
+☃️ Signature: You can create your own watermark that will be displayed in each class (Example: protected by obfus.jar).
 
-# 📸 Visual Transformation (Before & After)
+📸 Visual Transformation (Before & After)
 
 1. Control Flow & Logic
 Before: 
