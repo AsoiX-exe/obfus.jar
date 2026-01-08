@@ -38,9 +38,13 @@
 
 2. String Protection
 
-Before: Hardcoded API keys or messages in the Constant Pool.
+# BEFORE:
 
-After: Encrypted arrays and stack-based reconstruction.
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before1.png)
+
+# AFTER: 
+
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after1.png)
 
 # 🛠️Deep Technical Analysis: The "lIl1llI" Renaming Strategy
 One of the most effective psychological and technical barriers in obfus.jar is the Method & Variable Remapper.
