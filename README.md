@@ -8,7 +8,7 @@
     ██████╔╝██████╔╝██║     ╚██████╔╝███████║ ╚█████╔╝██║  ██║██║  ██║
     ╚═════╝ ╚═════╝ ╚═╝      ╚═════╝ ╚══════╝  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ 
 ```
-# Obfus.jar is an obfuscation tool designed to protect Java applications and Bukkit/Spigot plugins from reverse engineering. Using advanced assembly-based transformations, it makes decompiled code unreadable and causes analysis tools to fail.
+ Obfus.jar is an obfuscation tool designed to protect Java applications and Bukkit/Spigot plugins from reverse engineering. Using advanced assembly-based transformations, it makes decompiled code unreadable and causes analysis tools to fail.
 
 #   🔥 Key Features
 🔢 Mathematical Mutation: Transforms simple integers into complex mathematical expressions evaluated at runtime (XOR/AND/OR logic).
@@ -44,6 +44,7 @@ How it works:
 Instead of using descriptive names like calculatePremium() or checkLicense(), the obfuscator replaces them with combinations of l (lowercase L), I (uppercase i), and 1 (number one).
 
 # Original Code:
+```Java
 
 public boolean checkUser(String name) { 
 if (name.equals("admin")) { 
@@ -51,8 +52,9 @@ return true;
 } 
 return false;
 }
-
+```
 # Obfuscated Code:
+```Java
 
 public boolean lIl9281llI(String IIl102l) { 
 if (IIl102l.equals(mllI11_8271(new int[]{...}))) { 
@@ -60,7 +62,9 @@ return true;
 } 
 return false;
 }
-Why is this effective:
+```
+
+# Why is this effective:
 Visual Similarity: In many IDEs and text editors, l, I, and 1 look nearly identical. This causes "visual fatigue" for the reverse engineer.
 
 Search Obstruction: Trying to "Find and Replace" or trace a specific variable becomes a nightmare when there are 500 variables named lIIl1ll, lIl1lIl, and llIl11I.
