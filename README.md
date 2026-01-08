@@ -88,6 +88,10 @@ Result: Your protected JAR file will be created in the same folder.
 # ⚠️ Requirements
 Runtime: Java 8 or higher.
 
-# Libraries: Built on top of the powerful ASM library for bytecode manipulation and FlatLaf for a modern user interface.
+Libraries: Built on top of the powerful ASM library for bytecode manipulation and FlatLaf for a modern user interface.
 
-# Created with ❤️ for the Java developer community.
+## 📝License
+This project is licensed under the MIT License. See the ![LICENSE](https://github.com/AsoiX-exe/obfus.jar/blob/main/LICENSE) file for details.
+
+# ![📥 Download](https://github.com/AsoiX-exe/obfus.jar/releases)
+For your convenience, we provide ready-to-use, pre-built versions of obfus.jar via the Releases system on GitHub.
