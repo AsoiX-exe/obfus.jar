@@ -26,7 +26,7 @@
 
 ☃️ Signature: You can create your own watermark that will be displayed in each class (Example: protected by obfus.jar).
 
-📸 Visual Transformation (Before & After)
+Visual Transformation (Before & After)
 
 # BEFORE: 
 
@@ -101,5 +101,5 @@ Libraries: Built on top of the powerful ASM library for bytecode manipulation an
 ## 📝License
 This project is licensed under the MIT License. See the ![LICENSE](https://github.com/AsoiX-exe/obfus.jar/blob/main/LICENSE) file for details.
 
-# ![📥 Download](https://github.com/AsoiX-exe/obfus.jar/releases)
+# ![Download](https://github.com/AsoiX-exe/obfus.jar/releases)
 For your convenience, we provide ready-to-use, pre-built versions of obfus.jar via the Releases system on GitHub.
