@@ -29,9 +29,11 @@
 📸 Visual Transformation (Before & After)
 
 1. Control Flow & Logic
-Before: 
+BEFORE: 
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before.png)
 
-After: 
+AFTER: 
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after.png)
 
 2. String Protection
 Before: Hardcoded API keys or messages in the Constant Pool.
