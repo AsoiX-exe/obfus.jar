@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/obfus_jar_icon.png)
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/icon.png)
 # 🛡️ OBFUS.JAR | Java Obfuscator 
 
 ```text
