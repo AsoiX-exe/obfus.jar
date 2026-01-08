@@ -28,14 +28,16 @@
 
 📸 Visual Transformation (Before & After)
 
-1. Control Flow & Logic
-BEFORE: 
+# BEFORE: 
+
 ![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before.png)
 
-AFTER: 
+# AFTER: 
+
 ![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after.png)
 
 2. String Protection
+
 Before: Hardcoded API keys or messages in the Constant Pool.
 
 After: Encrypted arrays and stack-based reconstruction.
