@@ -37,7 +37,7 @@ Obfus.jar is a cutting-edge obfuscation tool designed to protect Java applicatio
 ![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after.png)
 
 1. Logic Protection (Ghost Mode)
-BEFORE: Standard, readable Java code. Logic is clearly visible.
+# BEFORE: Standard, readable Java code. Logic is clearly visible.
 
 ```Java
 
@@ -49,9 +49,9 @@ public boolean checkPassword(String password) {
     return false;
 }
 ```
-AFTER: Logic is gone. Replaced by InvokeCustoms calls. Decompilers fail to reconstruct the original flow.
-```
-Java
+# AFTER: Logic is gone. Replaced by InvokeCustoms calls. Decompilers fail to reconstruct the original flow.
+
+```Java
 
 public boolean checkPassword(String password) {
     // The logic is moved to a shadow method and called via invokedynamic
@@ -62,15 +62,15 @@ public boolean checkPassword(String password) {
 // private static synthetic void ghost$f32ebfa578634ebda37cd31913(...) { ... }
 ```
 2. String Encryption
-BEFORE: Sensitive data (passwords, messages) are visible in plain text.
-```
-Java
+# BEFORE: Sensitive data (passwords, messages) are visible in plain text.
+
+```Java
 
 private static final String SECRET_KEY = "super_secret_key_8821";
-AFTER: Strings are replaced by decryption calls or dynamic stack construction. Strings search yields nothing.
 ```
-```
-Java
+# AFTER: Strings are replaced by decryption calls or dynamic stack construction. Strings search yields nothing.
+
+```Java
 
 private static final String SECRET_KEY = RuntimeHelper.decrypt("5e884898da...", "key");
 // Or dynamically built:
