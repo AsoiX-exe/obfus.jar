@@ -9,97 +9,105 @@
     ██████╔╝██████╔╝██║     ╚██████╔╝███████║ ╚█████╔╝██║  ██║██║  ██║
     ╚═════╝ ╚═════╝ ╚═╝      ╚═════╝ ╚══════╝  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ 
 ```
- Obfus.jar is an obfuscation tool designed to protect Java applications and Bukkit/Spigot plugins from reverse engineering. Using advanced assembly-based transformations, it makes decompiled code unreadable and causes analysis tools to fail.
+Obfus.jar is a cutting-edge obfuscation tool designed to protect Java applications, Spigot plugins, and mods from reverse engineering. Unlike traditional rename-only obfuscators, obfus.jar utilizes Ghost Mode technology based on invokedynamic instructions, making static analysis nearly impossible and breaking most modern decompilers (JD-GUI, FernFlower, Procyon).
 
-#   🔥 Key Features
-🔢 Mathematical Mutation: Transforms simple integers into complex mathematical expressions evaluated at runtime (XOR/AND/OR logic).
+# 🔥 Key Features
+👻 `Ghost Mode` (Core Engine): Moves method bodies into synthetic "shadow" methods and calls them via invokedynamic instructions using a custom Bootstrap Class Loader. Decompilers see empty calls or InvokeCustoms, while the actual logic remains hidden.
 
-🛡️ Bitwise String Security: Encrypts strings using custom bitwise operations and hides them behind generated decryption methods.
+🔢 Math Mutation: Transforms simple integer constants into complex, multi-step mathematical expressions evaluated at runtime. Example: int i = 5 ➔ int i = ((120 ^ 45) & 15) + ...
 
-🏗️ Stack-Based String Builder: Dynamically restores strings on the JVM stack, leaving no trace for static string pool scanners.
+🛡️ Stack String Encryption: Strings are never stored in plain text. They are constructed dynamically on the stack byte-by-byte and decrypted only when needed using a polymorphic XOR/AES algorithm embedded in the RuntimeHelper.
 
-🌪️ Spaghetti Flow: Disrupts linear code execution using "flow bridges" and opaque predicates that mislead control flow graphs (CFGs).
+🌪️ Indirection & Flow Obfuscation: Disrupts linear code execution by injecting proxy methods and circular control flows, turning simple logic into "spaghetti code."
 
-💀 Anti-decompiler: Injects "dead sectors"—illegal bytecode sequences that cause tools like Fernflower or JD-GUI to hang or crash, while remaining valid for the JVM.
+🗑️ Trash Generation: Floods the JAR structure with hundreds of dummy directories (e.g., trash_16273...) to confuse unarchivers and manual inspection tools.
 
-📂 Garbage Generation: Fills the JAR file with thousands of dummy classes and creates a deep folder structure to hide your real logic.
+🛑 Anti-Debug & Anti-Tamper: Includes timing checks (System.nanoTime) to detect debuggers and StackTrace analysis to prevent runtime patching.
 
-☃️ Signature: You can create your own watermark that will be displayed in each class (Example: protected by obfus.jar).
+✍️ Custom Watermark: Injects a custom signature field into every class (e.g., protected by obfus.jar), marking your territory.
 
-Visual Transformation (Before & After)
+# 👁️ Visual Transformation
+1. Logic Protection (Ghost Mode)
+BEFORE: Standard, readable Java code. Logic is clearly visible.
 
-# BEFORE: 
+```Java
 
-![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before.png)
+public boolean checkPassword(String password) {
+    if (password.equals("admin123")) {
+        System.out.println("Access Granted");
+        return true;
+    }
+    return false;
+}
+```
+AFTER: Logic is gone. Replaced by InvokeCustoms calls. Decompilers fail to reconstruct the original flow.
+```
+Java
 
-# AFTER: 
+public boolean checkPassword(String password) {
+    // The logic is moved to a shadow method and called via invokedynamic
+    return (boolean) InvokeCustoms.CallSite0_ghost$f32ebfa578634ebda37cd31913(this, password);
+}
 
-![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after.png)
+// The actual logic is hidden in synthetic methods like:
+// private static synthetic void ghost$f32ebfa578634ebda37cd31913(...) { ... }
+```
+2. String Encryption
+BEFORE: Sensitive data (passwords, messages) are visible in plain text.
+```
+Java
 
-2. String Protection
+private static final String SECRET_KEY = "super_secret_key_8821";
+AFTER: Strings are replaced by decryption calls or dynamic stack construction. Strings search yields nothing.
+```
+```
+Java
 
-# BEFORE:
-
-![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before1.png)
-
-# AFTER: 
-
-![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after1.png)
-
-# 🛠️Deep Technical Analysis: The "lIl1llI" Renaming Strategy
-One of the most effective psychological and technical barriers in obfus.jar is the Method & Variable Remapper.
+private static final String SECRET_KEY = RuntimeHelper.decrypt("5e884898da...", "key");
+// Or dynamically built:
+// new String(new char[] { (char)115, (char)117, ... });
+```
+# 🛠️ Deep Technical Analysis: "Ghost Mode" & InvokeDynamic
+One of the most advanced features of obfus.jar is the Ghost Transformation.
 
 How it works:
-Instead of using descriptive names like calculatePremium() or checkLicense(), the obfuscator replaces them with combinations of l (lowercase L), I (uppercase i), and 1 (number one).
+Standard obfuscators just rename methods (a(), b()). obfus.jar changes how methods are called.
 
-# Original Code:
-```Java
+Shadowing: The real code is moved to a private static synthetic method with a randomized name (e.g., ghost$a1b2...).
 
-public boolean checkUser(String name) { 
-if (name.equals("admin")) { 
-return true; 
-} 
-return false;
-}
-```
-# Obfuscated Code:
-```Java
+Bootstrap Linking: The original call site is replaced by an invokedynamic instruction pointing to a custom Bootstrap Method inside GhostLoader.
 
-public boolean lIl9281llI(String IIl102l) { 
-if (IIl102l.equals(mllI11_8271(new int[]{...}))) { 
-return true; 
-} 
-return false;
-}
-```
+Runtime Resolution: When the JVM executes the code, GhostLoader dynamically links the call to the shadow method.
 
-# Why is this effective:
-Visual Similarity: In many IDEs and text editors, l, I, and 1 look nearly identical. This causes "visual fatigue" for the reverse engineer.
+Why is this effective?
 
-Search Obstruction: Trying to "Find and Replace" or trace a specific variable becomes a nightmare when there are 500 variables named lIIl1ll, lIl1lIl, and llIl11I.
+Static Analysis: Decompilers like JD-GUI or Fernflower rely on standard invokevirtual / invokestatic flows. They cannot handle custom CallSite resolutions and often crash or show empty methods.
 
-Analysis Delay: It breaks the mental model of the code. The researcher cannot quickly categorize what a method does based on its name.
+Patching: A cracker cannot simply "search and replace" instructions because the link between the caller and the callee is established only at runtime.
 
 # 🚀 Installation and Usage
-Download: Download the latest version of obfus.jar from the releases section.
+Download: Get the latest build from the Releases page.
 
-Run: Open obfus.jar without extracting it from the folder, because the folder contains important elements for the interface to work.
+Setup: Ensure you have Java 8 or higher installed.
 
-Protection: * Drag and drop your JAR file into the graphical interface.
+Run: Launch obfus.jar.
 
-Select protection modules (string encryption, mathematical expression manipulation, etc.).
+Protect:
 
-Click "Protect."
+Drag & Drop your target JAR into the window.
 
-Result: Your protected JAR file will be created in the same folder.
+Select your desired modules (Ghost Mode, Stack Strings, Trash Gen, etc.).
+
+If you need to select specific classes for obfuscation, uncheck "all classes" and select those you need to obfuscate.
+
+Click "Protect".
+
+Result: A new file obfus_yourfile.jar will appear in the source directory.
 
 # ⚠️ Requirements
-Runtime: Java 8 or higher.
+Runtime: Java 8+ (Compatible with Java 17/21).
 
-Libraries: Built on top of the powerful ASM library for bytecode manipulation and FlatLaf for a modern user interface.
+Libraries: Built on ASM (Bytecode Engineering) and FlatLaf (UI).
 
-## 📝License
+# 📝 License
 This project is licensed under the MIT License. See the ![LICENSE](https://github.com/AsoiX-exe/obfus.jar/blob/main/LICENSE) file for details.
-
-# ![Download](https://github.com/AsoiX-exe/obfus.jar/releases)
-For your convenience, we provide ready-to-use, pre-built versions of obfus.jar via the Releases system on GitHub.
