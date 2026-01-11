@@ -12,7 +12,7 @@
 Obfus.jar is a cutting-edge obfuscation tool designed to protect Java applications, Spigot plugins, and mods from reverse engineering. Unlike traditional rename-only obfuscators, obfus.jar utilizes Ghost Mode technology based on invokedynamic instructions, making static analysis nearly impossible and breaking most modern decompilers (JD-GUI, FernFlower, Procyon).
 
 # 🔥 Key Features
-👻 `Ghost Mode` (Core Engine): Moves method bodies into synthetic "shadow" methods and calls them via invokedynamic instructions using a custom Bootstrap Class Loader. Decompilers see empty calls or InvokeCustoms, while the actual logic remains hidden.
+👻 Ghost Mode (Core Engine): Moves method bodies into synthetic "shadow" methods and calls them via invokedynamic instructions using a custom Bootstrap Class Loader. Decompilers see empty calls or InvokeCustoms, while the actual logic remains hidden.
 
 🔢 Math Mutation: Transforms simple integer constants into complex, multi-step mathematical expressions evaluated at runtime. Example: int i = 5 ➔ int i = ((120 ^ 45) & 15) + ...
 
@@ -27,6 +27,15 @@ Obfus.jar is a cutting-edge obfuscation tool designed to protect Java applicatio
 ✍️ Custom Watermark: Injects a custom signature field into every class (e.g., protected by obfus.jar), marking your territory.
 
 # 👁️ Visual Transformation
+
+# BEFORE: 
+
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before.png)
+
+# AFTER: 
+
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after.png)
+
 1. Logic Protection (Ghost Mode)
 BEFORE: Standard, readable Java code. Logic is clearly visible.
 
