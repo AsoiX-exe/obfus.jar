@@ -30,11 +30,11 @@ Obfus.jar is a cutting-edge obfuscation tool designed to protect Java applicatio
 
 # BEFORE: 
 
-![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before.png)
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/before3.png)
 
 # AFTER: 
 
-![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after.png)
+![Screenshot](https://github.com/AsoiX-exe/obfus.jar/blob/main/after3.png)
 
 1. Logic Protection (Ghost Mode)
 # BEFORE: Standard, readable Java code. Logic is clearly visible.
