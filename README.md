@@ -8,6 +8,7 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0.4-red" alt="v1.0.4"/>
   <img src="https://img.shields.io/badge/Java-8+-orange?logo=openjdk" alt="Java 8+"/>
   <img src="https://img.shields.io/badge/ASM-9.6-blue" alt="ASM 9.6"/>
   <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT"/>
@@ -18,7 +19,7 @@
 
 ## What is OBFUS.JAR?
 
-A next-generation obfuscation tool that goes far beyond simple renaming. The core engine **converts your Java bytecode into a custom VM instruction set** — your original code literally doesn't exist in the output JAR. On top of that, multiple layered protections make both static and dynamic analysis extremely difficult.
+A next-generation obfuscation tool that goes far beyond simple renaming. The core engine **converts your Java bytecode into a custom VM instruction set** — your original code literally doesn't exist in the output JAR. Multiple layered protections make both static and dynamic analysis extremely difficult.
 
 Works with **Spigot/Paper plugins**, **Fabric/Forge mods**, **BungeeCord/Velocity proxies**, and any standard Java application.
 
@@ -35,6 +36,7 @@ Works with **Spigot/Paper plugins**, **Fabric/Forge mods**, **BungeeCord/Velocit
         │     Honeypot Strings        │
         ├─────────────────────────────┤
         │     String Encryption       │
+        │       └ Per-Class Cipher    │
         ├─────────────────────────────┤
         │     Trash Code Injection    │
         ├─────────────────────────────┤
@@ -110,10 +112,10 @@ public boolean checkPassword(String password) {
 ---
 
 ### 🔐 String Encryption
-Every string literal is encrypted with a **per-JAR multi-phase cipher**. Decryption requires runtime components that are never exposed in user class files.
+Every string literal is encrypted with a **per-JAR, per-class multi-phase cipher**. Decryption requires runtime components that are never exposed in user class files.
 
-- Per-JAR secret key, unique salt per string
-- Multi-phase encryption pipeline
+- Per-JAR secret key + per-class diversification — breaking one class doesn't help with others
+- Unique salt per string, multi-phase encryption pipeline
 - Decrypted values cached for performance — zero TPS impact after first call
 
 > Without access to the runtime internals of a specific build, string decryption is not feasible.
